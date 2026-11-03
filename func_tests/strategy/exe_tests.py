@@ -211,6 +211,7 @@ class E009(Test_Strategy):
 
     def run_test(self) -> None:
         cmd = "STOP_ACQUISITION"
+        time_stamp = datetime.now(timezone.utc)
         self.send_unexpected_command("STOP_ACQUISITION")
 
         self._default_acq_config["#CYCLES"] = 3
@@ -226,6 +227,23 @@ class E009(Test_Strategy):
         if self.s4acs.camera.cam_status.cycles_done != 1:
             self.set_result("error", f"{cmd} command failed")
 
+        self.s4acs.send_command("EXPOSE")
+        self.wait_acquisition_start()
+        self.wait_end_of_cycle(2)
+        self.s4acs.send_command(cmd)
+
+        lines_list = self.get_log_file_lines()
+        filtered_log_lines = self.filter_logs_by_timestamp(lines_list, time_stamp)
+        filtered_log_lines = self.filter_logs_by_str(filtered_log_lines, "WARNING")
+        filtered_log_lines = self.extract_log_msg(filtered_log_lines)
+
+        for line in filtered_log_lines:
+            if line != f"The {cmd} command was ignored":
+                self.set_result("error", f"Unexpected log message: {line}")
+
+        self.wait_end_of_cycle(3)
+        self.s4acs.set_acquisition_config(self._default_acq_config)
+
         return super().run_test()
 
 
@@ -233,11 +251,13 @@ class E010(Test_Strategy):
     _test_code = "E010"
 
     def run_test(self) -> None:
+        time_stamp = datetime.now(timezone.utc)
         cmd = "PAUSE_ACQUISITION"
         self.send_unexpected_command("PAUSE_ACQUISITION")
 
-        self._default_acq_config["#CYCLES"] = 3
-        self.s4acs.set_acquisition_config(self._default_acq_config)
+        acq_config = self._default_acq_config.copy()
+        acq_config["#CYCLES"] = 3
+        self.s4acs.set_acquisition_config(acq_config)
         if not self.s4acs.validate_acq_config():
             self.set_result("error", "Unexpected acquisition configuration.")
 
@@ -251,7 +271,21 @@ class E010(Test_Strategy):
         self.s4acs.send_command("RESUME_ACQUISITION")
         self.wait_acquisition_finish()
 
-        self._default_acq_config["#CYCLES"] = 1
+        self.s4acs.send_command("EXPOSE")
+        self.wait_acquisition_start()
+        self.wait_end_of_cycle(2)
+        self.s4acs.send_command(cmd)
+
+        lines_list = self.get_log_file_lines()
+        filtered_log_lines = self.filter_logs_by_timestamp(lines_list, time_stamp)
+        filtered_log_lines = self.filter_logs_by_str(filtered_log_lines, "WARNING")
+        filtered_log_lines = self.extract_log_msg(filtered_log_lines)
+
+        for line in filtered_log_lines:
+            if line != f"The {cmd} command was ignored":
+                self.set_result("error", f"Unexpected log message: {line}")
+
+        self.wait_end_of_cycle(3)
         self.s4acs.set_acquisition_config(self._default_acq_config)
 
         return super().run_test()
@@ -604,4 +638,35 @@ class E021(Test_Strategy):
         for _str in expected_strings:
             if _str not in filtered_log_lines:
                 self.set_result("error", "Expected log msg was not found")
+        return super().run_test()
+
+
+class E023(Test_Strategy):
+    _test_code = "E023"
+
+    def run_test(self) -> None:
+        acq_config = self._default_acq_config.copy()
+        acq_config["#FRAMES"] = 2
+        self.s4acs.set_acquisition_config(acq_config)
+        sleep(1)
+        cam_config = self._default_cam_config.copy()
+        cam_config["READOUT_RATE"] = 1
+        self.s4acs.set_cam_config(cam_config)
+        sleep(1)
+        self.s4acs.send_command("EXPOSE")
+        self.wait_acquisition_start()
+        self.wait_acquisition_finish()
+        sleep(1)
+        current_exp_time = self.s4acs.camera.cam_status.current_exp_time
+        if current_exp_time != 2:
+            self.set_result("error", f"Unexpected exposure time: {current_exp_time}")
+        cam_config["FRAME_TRANSFER"] = True
+        self.s4acs.set_cam_config(cam_config)
+        self.s4acs.send_command("EXPOSE")
+        self.wait_acquisition_start()
+        self.wait_acquisition_finish()
+        if current_exp_time != 2:
+            self.set_result("error", f"Unexpected exposure time: {current_exp_time}")
+
+        self.s4acs.set_acquisition_config(self._default_acq_config)
         return super().run_test()

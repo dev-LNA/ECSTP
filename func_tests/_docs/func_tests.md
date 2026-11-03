@@ -23,8 +23,8 @@ These tests should be run before releasing a new S4ACS version
 - [x] **E006** When receiveing a `STOP_APP` command, S4ACS should stop running.
 - [x] **E007** An `EXPOSE` command should be accepted only if there is no error in the provided operation mode or if S4ACS is in the `STOP_ACQUISITION` or `WAIT_EXPOSE_COMMAND` states. Otherwise, a warning should be logged.
 - [x] **E008** In receiving an `EXPOSE` command, S4ACS should validate the current condition of the retarder waveplate, in case of polarimetric acquisitions. When verifying the waveplate condition, S4ACS should log a warning if, after 1.5 s of the exposure request, the waveplate stills not ready.
-- [ ] **E009** The `STOP_ACQUISITION` command should only be accepted before the last sequence/cycle of an image series. Otherwise, a warning should be logged. In stopping the acquisition, S4ACS should finish the current sequence/cycle and change to the IDLE state.
-- [ ] **E010** The `PAUSE_ACQUISITION` command should only be accepted before the last sequence/cycle of a photometric image series. Otherwise, a warning should be logged. If the acquisition is paused, S4ACS should wait for the resume command request.
+- [x] **E009** The `STOP_ACQUISITION` command should only be accepted before the last sequence/cycle of an image series. Otherwise, a warning should be logged. In stopping the acquisition, S4ACS should finish the current sequence/cycle and change to the IDLE state.
+- [x] **E010** The `PAUSE_ACQUISITION` command should only be accepted before the last sequence/cycle of a photometric image series. Otherwise, a warning should be logged. If the acquisition is paused, S4ACS should wait for the resume command request.
 - [x] **E011** A `RESUME_ACQUISITION` command should be accepted only if the current acquisition is paused. Otherwise, a warning should be logged.
 - [x] **E012** An `ABORT_ACQUISITION` command should be accepted only during an ongoing exposure or before the end of an image series. In aborting an acquisition, the current acquisition should be aborted and S4ACS should be set to the ACQUISITION_ABORTED state. In case no condition is met, a warning should be logged.
 
@@ -40,7 +40,7 @@ These tests should be run before releasing a new S4ACS version
 - [x] **E020** - S4ACS should freeze the information to be written in the image header immediately before the start of an exposure.
 - [x] **E021** - A message should be logged after then end of the acquisition of an image series and after the end of writting the images to disk.
 - [ ] **E022** - If S4ACS is run in the video mode, no image should be created after an exposure.
-- [ ] **E023** - The current exposure time calculation should be validated as a function of the camera frame transfer modes.
+- [x] **E023** - The current exposure time calculation should be validated as a function of the camera frame transfer modes.
 
 
 ----------------------------------------------------------------------------------------
