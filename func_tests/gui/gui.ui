@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>746</width>
-    <height>817</height>
+    <height>917</height>
    </rect>
   </property>
   <property name="palette">
@@ -1891,19 +1891,6 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
-            <widget class="QLabel" name="tests_led3">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="led" stdset="0">
-              <bool>true</bool>
-             </property>
-             <property name="led_status" stdset="0">
-              <string>off</string>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="2">
             <widget class="QLineEdit" name="tests_test_code2">
              <property name="enabled">
@@ -1937,6 +1924,19 @@ background-color: rgb(241, 85, 85);
              </property>
              <property name="text_label" stdset="0">
               <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="tests_led3">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="led" stdset="0">
+              <bool>true</bool>
+             </property>
+             <property name="led_status" stdset="0">
+              <string>off</string>
              </property>
             </widget>
            </item>
@@ -1976,13 +1976,16 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_41">
-             <property name="text">
-              <string>#5</string>
+           <item row="3" column="1">
+            <widget class="QLabel" name="tests_led4">
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
-             <property name="text_label" stdset="0">
+             <property name="led" stdset="0">
               <bool>true</bool>
+             </property>
+             <property name="led_status" stdset="0">
+              <string>off</string>
              </property>
             </widget>
            </item>
@@ -2002,19 +2005,6 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
-           <item row="3" column="1">
-            <widget class="QLabel" name="tests_led4">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="led" stdset="0">
-              <bool>true</bool>
-             </property>
-             <property name="led_status" stdset="0">
-              <string>off</string>
-             </property>
-            </widget>
-           </item>
            <item row="3" column="3">
             <widget class="QLineEdit" name="tests_message4">
              <property name="enabled">
@@ -2025,44 +2015,18 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
-           <item row="11" column="2">
-            <widget class="QLineEdit" name="tests_test_code12">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>40</width>
-               <height>16777215</height>
-              </size>
-             </property>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_41">
              <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="3">
-            <widget class="QLineEdit" name="tests_message12">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="0">
-            <widget class="QLabel" name="label_48">
-             <property name="text">
-              <string>#12</string>
+              <string>#5</string>
              </property>
              <property name="text_label" stdset="0">
               <bool>true</bool>
              </property>
             </widget>
            </item>
-           <item row="11" column="1">
-            <widget class="QLabel" name="tests_led12">
+           <item row="4" column="1">
+            <widget class="QLabel" name="tests_led5">
              <property name="styleSheet">
               <string notr="true"/>
              </property>
@@ -2071,65 +2035,6 @@ background-color: rgb(241, 85, 85);
              </property>
              <property name="led_status" stdset="0">
               <string>off</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="3">
-            <widget class="QLineEdit" name="tests_message13">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="2">
-            <widget class="QLineEdit" name="tests_test_code13">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>40</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="1">
-            <widget class="QLabel" name="tests_led13">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="led" stdset="0">
-              <bool>true</bool>
-             </property>
-             <property name="led_status" stdset="0">
-              <string>off</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="0">
-            <widget class="QLabel" name="label_49">
-             <property name="text">
-              <string>#13</string>
-             </property>
-             <property name="text_label" stdset="0">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="3">
-            <widget class="QLineEdit" name="tests_message5">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string/>
              </property>
             </widget>
            </item>
@@ -2149,26 +2054,23 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
-            <widget class="QLabel" name="tests_led5">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="led" stdset="0">
-              <bool>true</bool>
-             </property>
-             <property name="led_status" stdset="0">
-              <string>off</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="3">
-            <widget class="QLineEdit" name="tests_message6">
+           <item row="4" column="3">
+            <widget class="QLineEdit" name="tests_message5">
              <property name="enabled">
               <bool>false</bool>
              </property>
              <property name="text">
               <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_43">
+             <property name="text">
+              <string>#6</string>
+             </property>
+             <property name="text_label" stdset="0">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -2182,16 +2084,6 @@ background-color: rgb(241, 85, 85);
              </property>
              <property name="led_status" stdset="0">
               <string>off</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_43">
-             <property name="text">
-              <string>#6</string>
-             </property>
-             <property name="text_label" stdset="0">
-              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -2211,13 +2103,23 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
-           <item row="6" column="3">
-            <widget class="QLineEdit" name="tests_message7">
+           <item row="5" column="3">
+            <widget class="QLineEdit" name="tests_message6">
              <property name="enabled">
               <bool>false</bool>
              </property>
              <property name="text">
               <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_42">
+             <property name="text">
+              <string>#7</string>
+             </property>
+             <property name="text_label" stdset="0">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -2250,13 +2152,13 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_42">
-             <property name="text">
-              <string>#7</string>
+           <item row="6" column="3">
+            <widget class="QLineEdit" name="tests_message7">
+             <property name="enabled">
+              <bool>false</bool>
              </property>
-             <property name="text_label" stdset="0">
-              <bool>true</bool>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>
@@ -2309,6 +2211,16 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="label_44">
+             <property name="text">
+              <string>#9</string>
+             </property>
+             <property name="text_label" stdset="0">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
            <item row="8" column="1">
             <widget class="QLabel" name="tests_led9">
              <property name="styleSheet">
@@ -2335,16 +2247,6 @@ background-color: rgb(241, 85, 85);
              </property>
              <property name="text">
               <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLabel" name="label_44">
-             <property name="text">
-              <string>#9</string>
-             </property>
-             <property name="text_label" stdset="0">
-              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -2430,16 +2332,6 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
-           <item row="10" column="3">
-            <widget class="QLineEdit" name="tests_message11">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
            <item row="10" column="2">
             <widget class="QLineEdit" name="tests_test_code11">
              <property name="enabled">
@@ -2456,160 +2348,268 @@ background-color: rgb(241, 85, 85);
              </property>
             </widget>
            </item>
+           <item row="10" column="3">
+            <widget class="QLineEdit" name="tests_message11">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="label_48">
+             <property name="text">
+              <string>#12</string>
+             </property>
+             <property name="text_label" stdset="0">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QLabel" name="tests_led12">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="led" stdset="0">
+              <bool>true</bool>
+             </property>
+             <property name="led_status" stdset="0">
+              <string>off</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="2">
+            <widget class="QLineEdit" name="tests_test_code12">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="3">
+            <widget class="QLineEdit" name="tests_message12">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <widget class="QLabel" name="label_49">
+             <property name="text">
+              <string>#13</string>
+             </property>
+             <property name="text_label" stdset="0">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="QLabel" name="tests_led13">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="led" stdset="0">
+              <bool>true</bool>
+             </property>
+             <property name="led_status" stdset="0">
+              <string>off</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="2">
+            <widget class="QLineEdit" name="tests_test_code13">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="3">
+            <widget class="QLineEdit" name="tests_message13">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="label_50">
+             <property name="text">
+              <string>#14</string>
+             </property>
+             <property name="text_label" stdset="0">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QLabel" name="tests_led14">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="led" stdset="0">
+              <bool>true</bool>
+             </property>
+             <property name="led_status" stdset="0">
+              <string>off</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="2">
+            <widget class="QLineEdit" name="tests_test_code14">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="3">
+            <widget class="QLineEdit" name="tests_message14">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="label_51">
+             <property name="text">
+              <string>#15</string>
+             </property>
+             <property name="text_label" stdset="0">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="1">
+            <widget class="QLabel" name="tests_led15">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="led" stdset="0">
+              <bool>true</bool>
+             </property>
+             <property name="led_status" stdset="0">
+              <string>off</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="2">
+            <widget class="QLineEdit" name="tests_test_code15">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="3">
+            <widget class="QLineEdit" name="tests_message15">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0">
+            <widget class="QLabel" name="label_52">
+             <property name="text">
+              <string>#16</string>
+             </property>
+             <property name="text_label" stdset="0">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="1">
+            <widget class="QLabel" name="tests_led16">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="led" stdset="0">
+              <bool>true</bool>
+             </property>
+             <property name="led_status" stdset="0">
+              <string>off</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="2">
+            <widget class="QLineEdit" name="tests_test_code16">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="3">
+            <widget class="QLineEdit" name="tests_message16">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
         </layout>
        </item>
        <item>
-        <layout class="QGridLayout" name="gridLayout_2">
+        <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0">
-          <widget class="QLabel" name="label_50">
-           <property name="text">
-            <string>#14</string>
-           </property>
-           <property name="text_label" stdset="0">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="tests_led14">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="led" stdset="0">
-            <bool>true</bool>
-           </property>
-           <property name="led_status" stdset="0">
-            <string>off</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="tests_test_code14">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>40</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLineEdit" name="tests_message14">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_51">
-           <property name="text">
-            <string>#15</string>
-           </property>
-           <property name="text_label" stdset="0">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="tests_led15">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="led" stdset="0">
-            <bool>true</bool>
-           </property>
-           <property name="led_status" stdset="0">
-            <string>off</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QLineEdit" name="tests_test_code15">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>40</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="3">
-          <widget class="QLineEdit" name="tests_message15">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_52">
-           <property name="text">
-            <string>#16</string>
-           </property>
-           <property name="text_label" stdset="0">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="tests_led16">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="led" stdset="0">
-            <bool>true</bool>
-           </property>
-           <property name="led_status" stdset="0">
-            <string>off</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QLineEdit" name="tests_test_code16">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>40</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="3">
-          <widget class="QLineEdit" name="tests_message16">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
           <widget class="QLabel" name="label_53">
            <property name="text">
             <string>#17</string>
@@ -2619,7 +2619,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
+         <item row="0" column="1">
           <widget class="QLabel" name="tests_led17">
            <property name="styleSheet">
             <string notr="true"/>
@@ -2632,7 +2632,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="3" column="2">
+         <item row="0" column="2">
           <widget class="QLineEdit" name="tests_test_code17">
            <property name="enabled">
             <bool>false</bool>
@@ -2648,7 +2648,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="3" column="3">
+         <item row="0" column="3">
           <widget class="QLineEdit" name="tests_message17">
            <property name="enabled">
             <bool>false</bool>
@@ -2658,7 +2658,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="1" column="0">
           <widget class="QLabel" name="label_54">
            <property name="text">
             <string>#18</string>
@@ -2668,7 +2668,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="4" column="1">
+         <item row="1" column="1">
           <widget class="QLabel" name="tests_led18">
            <property name="styleSheet">
             <string notr="true"/>
@@ -2681,7 +2681,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="4" column="2">
+         <item row="1" column="2">
           <widget class="QLineEdit" name="tests_test_code18">
            <property name="enabled">
             <bool>false</bool>
@@ -2697,7 +2697,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="4" column="3">
+         <item row="1" column="3">
           <widget class="QLineEdit" name="tests_message18">
            <property name="enabled">
             <bool>false</bool>
@@ -2707,7 +2707,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
+         <item row="2" column="0">
           <widget class="QLabel" name="label_58">
            <property name="text">
             <string>#19</string>
@@ -2717,7 +2717,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
+         <item row="2" column="1">
           <widget class="QLabel" name="tests_led19">
            <property name="styleSheet">
             <string notr="true"/>
@@ -2730,7 +2730,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="5" column="2">
+         <item row="2" column="2">
           <widget class="QLineEdit" name="tests_test_code19">
            <property name="enabled">
             <bool>false</bool>
@@ -2746,7 +2746,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="5" column="3">
+         <item row="2" column="3">
           <widget class="QLineEdit" name="tests_message19">
            <property name="enabled">
             <bool>false</bool>
@@ -2756,7 +2756,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="6" column="0">
+         <item row="3" column="0">
           <widget class="QLabel" name="label_59">
            <property name="text">
             <string>#20</string>
@@ -2766,7 +2766,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="6" column="1">
+         <item row="3" column="1">
           <widget class="QLabel" name="tests_led20">
            <property name="styleSheet">
             <string notr="true"/>
@@ -2779,7 +2779,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="6" column="2">
+         <item row="3" column="2">
           <widget class="QLineEdit" name="tests_test_code20">
            <property name="enabled">
             <bool>false</bool>
@@ -2795,7 +2795,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="6" column="3">
+         <item row="3" column="3">
           <widget class="QLineEdit" name="tests_message20">
            <property name="enabled">
             <bool>false</bool>
@@ -2805,7 +2805,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="7" column="0">
+         <item row="4" column="0">
           <widget class="QLabel" name="label_60">
            <property name="text">
             <string>#21</string>
@@ -2815,7 +2815,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="7" column="1">
+         <item row="4" column="1">
           <widget class="QLabel" name="tests_led21">
            <property name="styleSheet">
             <string notr="true"/>
@@ -2828,7 +2828,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="7" column="2">
+         <item row="4" column="2">
           <widget class="QLineEdit" name="tests_test_code21">
            <property name="enabled">
             <bool>false</bool>
@@ -2844,7 +2844,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="7" column="3">
+         <item row="4" column="3">
           <widget class="QLineEdit" name="tests_message21">
            <property name="enabled">
             <bool>false</bool>
@@ -2854,7 +2854,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="8" column="0">
+         <item row="5" column="0">
           <widget class="QLabel" name="label_61">
            <property name="text">
             <string>#22</string>
@@ -2864,7 +2864,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="8" column="1">
+         <item row="5" column="1">
           <widget class="QLabel" name="tests_led22">
            <property name="styleSheet">
             <string notr="true"/>
@@ -2877,7 +2877,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="8" column="2">
+         <item row="5" column="2">
           <widget class="QLineEdit" name="tests_test_code22">
            <property name="enabled">
             <bool>false</bool>
@@ -2893,7 +2893,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="8" column="3">
+         <item row="5" column="3">
           <widget class="QLineEdit" name="tests_message22">
            <property name="enabled">
             <bool>false</bool>
@@ -2903,7 +2903,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="9" column="0">
+         <item row="6" column="0">
           <widget class="QLabel" name="label_62">
            <property name="text">
             <string>#23</string>
@@ -2913,7 +2913,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="9" column="1">
+         <item row="6" column="1">
           <widget class="QLabel" name="tests_led23">
            <property name="styleSheet">
             <string notr="true"/>
@@ -2926,7 +2926,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="9" column="2">
+         <item row="6" column="2">
           <widget class="QLineEdit" name="tests_test_code23">
            <property name="enabled">
             <bool>false</bool>
@@ -2942,7 +2942,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="9" column="3">
+         <item row="6" column="3">
           <widget class="QLineEdit" name="tests_message23">
            <property name="enabled">
             <bool>false</bool>
@@ -2952,7 +2952,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="10" column="0">
+         <item row="7" column="0">
           <widget class="QLabel" name="label_63">
            <property name="text">
             <string>#24</string>
@@ -2962,7 +2962,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="10" column="1">
+         <item row="7" column="1">
           <widget class="QLabel" name="tests_led24">
            <property name="styleSheet">
             <string notr="true"/>
@@ -2975,7 +2975,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="10" column="2">
+         <item row="7" column="2">
           <widget class="QLineEdit" name="tests_test_code24">
            <property name="enabled">
             <bool>false</bool>
@@ -2991,7 +2991,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="10" column="3">
+         <item row="7" column="3">
           <widget class="QLineEdit" name="tests_message24">
            <property name="enabled">
             <bool>false</bool>
@@ -3001,7 +3001,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="11" column="0">
+         <item row="8" column="0">
           <widget class="QLabel" name="label_64">
            <property name="text">
             <string>#25</string>
@@ -3011,7 +3011,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="11" column="1">
+         <item row="8" column="1">
           <widget class="QLabel" name="tests_led25">
            <property name="styleSheet">
             <string notr="true"/>
@@ -3024,7 +3024,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="11" column="2">
+         <item row="8" column="2">
           <widget class="QLineEdit" name="tests_test_code25">
            <property name="enabled">
             <bool>false</bool>
@@ -3040,7 +3040,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="11" column="3">
+         <item row="8" column="3">
           <widget class="QLineEdit" name="tests_message25">
            <property name="enabled">
             <bool>false</bool>
@@ -3050,7 +3050,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="12" column="0">
+         <item row="9" column="0">
           <widget class="QLabel" name="label_65">
            <property name="text">
             <string>#26</string>
@@ -3060,7 +3060,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="12" column="1">
+         <item row="9" column="1">
           <widget class="QLabel" name="tests_led26">
            <property name="styleSheet">
             <string notr="true"/>
@@ -3073,7 +3073,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="12" column="2">
+         <item row="9" column="2">
           <widget class="QLineEdit" name="tests_test_code26">
            <property name="enabled">
             <bool>false</bool>
@@ -3089,7 +3089,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="12" column="3">
+         <item row="9" column="3">
           <widget class="QLineEdit" name="tests_message26">
            <property name="enabled">
             <bool>false</bool>
@@ -3099,7 +3099,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="13" column="0">
+         <item row="10" column="0">
           <widget class="QLabel" name="label_66">
            <property name="text">
             <string>#27</string>
@@ -3109,7 +3109,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="13" column="1">
+         <item row="10" column="1">
           <widget class="QLabel" name="tests_led27">
            <property name="styleSheet">
             <string notr="true"/>
@@ -3122,7 +3122,7 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="13" column="2">
+         <item row="10" column="2">
           <widget class="QLineEdit" name="tests_test_code27">
            <property name="enabled">
             <bool>false</bool>
@@ -3138,8 +3138,155 @@ background-color: rgb(241, 85, 85);
            </property>
           </widget>
          </item>
-         <item row="13" column="3">
+         <item row="10" column="3">
           <widget class="QLineEdit" name="tests_message27">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_97">
+           <property name="text">
+            <string>#28</string>
+           </property>
+           <property name="text_label" stdset="0">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QLabel" name="tests_led28">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="led" stdset="0">
+            <bool>true</bool>
+           </property>
+           <property name="led_status" stdset="0">
+            <string>off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="2">
+          <widget class="QLineEdit" name="tests_test_code28">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="3">
+          <widget class="QLineEdit" name="tests_message28">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="0">
+          <widget class="QLabel" name="label_96">
+           <property name="text">
+            <string>#29</string>
+           </property>
+           <property name="text_label" stdset="0">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="1">
+          <widget class="QLabel" name="tests_led29">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="led" stdset="0">
+            <bool>true</bool>
+           </property>
+           <property name="led_status" stdset="0">
+            <string>off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="2">
+          <widget class="QLineEdit" name="tests_test_code29">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="3">
+          <widget class="QLineEdit" name="tests_message29">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0">
+          <widget class="QLabel" name="label_95">
+           <property name="text">
+            <string>#30</string>
+           </property>
+           <property name="text_label" stdset="0">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="1">
+          <widget class="QLabel" name="tests_led30">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="led" stdset="0">
+            <bool>true</bool>
+           </property>
+           <property name="led_status" stdset="0">
+            <string>off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="2">
+          <widget class="QLineEdit" name="tests_test_code30">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="3">
+          <widget class="QLineEdit" name="tests_message30">
            <property name="enabled">
             <bool>false</bool>
            </property>

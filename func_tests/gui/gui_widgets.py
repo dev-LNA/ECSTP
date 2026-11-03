@@ -186,4 +186,19 @@ class GUI_Widgets:
                 window.findChild(QLineEdit, "tests_test_code27"),
                 window.findChild(QLineEdit, "tests_message27"),
             ],
+            28: [
+                window.findChild(QLabel, "tests_led28"),
+                window.findChild(QLineEdit, "tests_test_code28"),
+                window.findChild(QLineEdit, "tests_message28"),
+            ],
+            29: [
+                window.findChild(QLabel, "tests_led29"),
+                window.findChild(QLineEdit, "tests_test_code29"),
+                window.findChild(QLineEdit, "tests_message29"),
+            ],
+            30: [
+                window.findChild(QLabel, "tests_led30"),
+                window.findChild(QLineEdit, "tests_test_code30"),
+                window.findChild(QLineEdit, "tests_message30"),
+            ],
         }

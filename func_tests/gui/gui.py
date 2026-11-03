@@ -125,14 +125,14 @@ class GUI(QMainWindow):
 
         s4acs = setup.Framework_Setup().create_component("real")
         self.framework = framework.Functionalities_Tests_Framework(s4acs, self)
-        # self.framework.set_tests_list(
-        #     test_type=self.gui_widgets.framework_test_type.currentText(),
-        #     test_code=self.gui_widgets.framework_test_code.text(),
-        # )
         self.framework.set_tests_list(
-            test_type="one test",
-            test_code="E022",
+            test_type=self.gui_widgets.framework_test_type.currentText(),
+            test_code=self.gui_widgets.framework_test_code.text(),
         )
+        # self.framework.set_tests_list(
+        #     test_type="one test",
+        #     test_code="E022",
+        # )
         self.framework.stop_1st_err = self.gui_widgets.framework_stop_1st_err.isChecked()
         self._thread1 = Thread(target=self.framework.run)
         self._thread2 = Thread(target=self.framework.update_status)

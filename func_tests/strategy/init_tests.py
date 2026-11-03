@@ -103,6 +103,7 @@ class I004(Test_Strategy):
         utils.run_s4acs_exe()
 
         self.wait_cam_on()
+        sleep(1)
 
         return super().run_test()
 
@@ -162,11 +163,7 @@ class I007(Test_Strategy):
         utils.write_cfg_file(acs_config, cfg_file_name)
         cfg_file = Path(Path.cwd().root) / "sparc4" / "config" / "acs_config.cfg"
         os.remove(cfg_file)
-
         utils.run_s4acs_exe()
-        if not self.wait_comm(True):
-            self.set_result("error", "S4ACS did not initialize")
-
         if not self.wait_comm(False):
             self.set_result("error", "S4ACS initialized without the cfg file")
 
