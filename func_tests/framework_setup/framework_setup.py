@@ -38,6 +38,7 @@ class Framework_Setup:
         strategy.E017,
         strategy.E018,
         strategy.E020,
+        strategy.E021,
         strategy.S001,
     ]
 

@@ -35,6 +35,7 @@ default_acq_config = {
     "EXPTIME": 2,
     "#FRAMES": 1,
     "#CYCLES": 1,
+    "#SEQS": 1,
     "suffix": "",
     "COOLER_POWER_STATUS": 1,
     "TEMP": 10,

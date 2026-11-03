@@ -2,8 +2,11 @@ import json
 from datetime import datetime, timezone
 from time import sleep
 
+from astropy.io import fits
+
 import func_tests.data_types as data_types
 import func_tests.utils as utils
+from func_tests.utils.utils import S4GUI_JSON
 
 from .test_strategy import Test_Strategy
 
@@ -522,17 +525,66 @@ class E018(Test_Strategy):
 
     def run_test(self) -> None:
         wppos = 0b1010101010101010
+        s4gui_json = S4GUI_JSON.copy()
+        s4gui_json["INSTMODE"] = "POLAR"
+        self.framework._external_apps["s4gui"].status = s4gui_json
+        self.framework._external_apps["s4gui"].publish_status()
+        sleep(1)
+
         self.s4acs.send_command(f"SET WAVEPLATE_POS {wppos!s}")
+        self.s4acs.send_command("EXPOSE")
+        self.wait_acquisition_start()
+        self.s4acs.send_command("STOP_ACQUISITION")
+        self.wait_return_to_idle()
         sleep(1)
         seqs_number = self.s4acs.camera.received_acq_config.seqs
         if not seqs_number == 8:
             self.set_result("error", f"Unexpected sequences number: {seqs_number}")
+        last_image = (
+            self.acs_config.image_path / self.s4acs.camera.cam_status.last_image_name
+        )
+        wpposseq = fits.getheader(last_image)["WPPOSSEQ"]
+        if not wpposseq == "2,4,6,8,10,12,14,16":
+            self.set_result("error", f"Unexpected wppos sequence: {wpposseq}")
 
+        s4gui_json["INSTMODE"] = "PHOT"
+        self.framework._external_apps["s4gui"].status = s4gui_json
+        self.framework._external_apps["s4gui"].publish_status()
+        self.s4acs.send_command("SET WAVEPLATE_POS 0")
         return super().run_test()
 
 
 class E020(Test_Strategy):
     _test_code = "E020"
+
+    def run_test(self) -> None:
+        s4gui_json = S4GUI_JSON.copy()
+        s4gui_json["OBJECT"] = "TEST01"
+        self.framework._external_apps["s4gui"].status = s4gui_json
+        self.framework._external_apps["s4gui"].publish_status()
+        sleep(1)
+        self.s4acs.send_command("EXPOSE")
+        self.wait_acquisition_start()
+        s4gui_json["OBJECT"] = "TEST02"
+        self.framework._external_apps["s4gui"].status = s4gui_json
+        self.framework._external_apps["s4gui"].publish_status()
+        self.wait_return_to_idle()
+        sleep(1)
+        last_image = (
+            self.acs_config.image_path / self.s4acs.camera.cam_status.last_image_name
+        )
+        object = fits.getheader(last_image)["OBJECT"]
+        if object != "TEST01":
+            self.set_result("error", f"Unexpected object keyword value: {object}")
+
+        s4gui_json["INSTMODE"] = "Test"
+        self.framework._external_apps["s4gui"].status = s4gui_json
+        self.framework._external_apps["s4gui"].publish_status()
+        return super().run_test()
+
+
+class E021(Test_Strategy):
+    _test_code = "E021"
 
     def run_test(self) -> None:
         time_stamp_1 = datetime.now(timezone.utc)
