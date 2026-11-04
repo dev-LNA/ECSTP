@@ -421,3 +421,15 @@ class Test_Keywords(unittest.TestCase):
                 logging.error(
                     f"Test: {func_name}, filename: {hdu.header['FILENAME']}, {str(warn.message).replace('\n', '')}"  # type: ignore
                 )
+
+    def test_wpposseq(self) -> None:
+        func_name = inspect.currentframe().f_code.co_name  # type: ignore
+        for hdr in self.hdrs_list:
+            wpposseq = [int(val) for val in str(hdr["WPPOSSEQ"]).split(",")]
+            wppos = hdr["WPPOS"]
+            seqidx = int(hdr["SEQINDEX"])  # type: ignore
+            if not wppos == wpposseq[seqidx - 1]:
+                logging.error(
+                    f"Test: {func_name}, filename: {hdr['FILENAME']},"
+                    f" unexpected WPPOS: {wppos}."
+                )
