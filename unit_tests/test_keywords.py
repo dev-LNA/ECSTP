@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-"""Test the image keywords
-
-
-Created on thursday, May 22 2025.
-
-@author: denis
-"""
-
 import configparser
 import inspect
 import logging
