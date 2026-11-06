@@ -23,26 +23,20 @@ class Test_Keywords(unittest.TestCase):
         self.var_types = {"float": float, "integer": int, "string": str, "boolean": bool}
         self.kws_specific_values = [
             "BITPIX",
-            "INSTMODE",
-            "SYNCMODE",
-            "FILTER",
             "OBSTYPE",
             "ACQMODE",
             "PREAMP",
             "READRATE",
             "VSHIFT",
             "TRIGGER",
-            "EMMODE",
             "SHUTTER",
             "TEMPST",
             "VCLKAMP",
             "CTRLINTE",
-            "WPSEL",
-            "CALW",
             "CCDSERN",
         ]
         self.regex_expressions = {
-            "FILENAME": r"\d{8}_s4c[1-4]_\d{6}(_[a-z0-9]+)?\.fits$",
+            "FILENAME": r"^\d{8}_ech[12]_\d{6}_[fcbdoa]\.fits$",
             "DATE-OBS": r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}$",
             "DATEFILE": r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}$",
             "UTTIME": r"\d{2}:\d{2}:\d{2}\.\d{6}$",
@@ -59,13 +53,6 @@ class Test_Keywords(unittest.TestCase):
         self.kws_fixed_str_size = [("PROPID", 15), ("OBJECT", 30), ("OBSERVER", 54)]
         self.simulated_mode_kws = [
             "ACSMODE",
-            "WPROMODE",
-            "WPSEMODE",
-            "ANMODE",
-            "CALWMODE",
-            "GMIRMODE",
-            "GFOCMODE",
-            "TCSMODE",
         ]
 
     @classmethod
@@ -261,14 +248,6 @@ class Test_Keywords(unittest.TestCase):
                 func_name = inspect.currentframe().f_code.co_name  # type: ignore
                 self.verify_regex(value, expression, kw, filename, func_name)
 
-    def test_WPPOS(self) -> None:
-        for hdr in self.hdrs_list:
-            if (hdr["INSTMODE"] == "POLAR") & (hdr["WPPOS"] == 0):
-                raise ValueError(
-                    "The value WPPOS=0 was found the polarimetric mode.",
-                    hdr["FILENAME"],
-                )
-
     def test_comment_kw(self) -> None:
         for hdr in self.hdrs_list:
             if "COMMENT" in hdr:
@@ -297,42 +276,14 @@ class Test_Keywords(unittest.TestCase):
             expected = 1864.0
             self.compare_numbers(expected, received, filename, func_name)
 
-    def test_ccd_gain(self) -> None:
-        for hdr in self.hdrs_list:
-            em_mode = hdr["EMMODE"]
-            if em_mode != "Conventional":
-                em_mode = "EM"
-            readout = hdr["READRATE"]
-            preamp = float(hdr["PREAMP"][-1])  # type: ignore
-            serial_number = f"{hdr['CCDSERN']}"
-            gain = hdr["GAIN"]
-            filter = (
-                (self.ccd_gains["EM Mode"] == em_mode)
-                & (self.ccd_gains["Readout Rate"] == readout)
-                & (self.ccd_gains["Preamp"] == preamp)
-            )
-            line = self.ccd_gains[filter]
-            filename, expected, received = (
-                hdr["FILENAME"],
-                line[serial_number].values[0],
-                gain,
-            )
-            func_name = inspect.currentframe().f_code.co_name  # type: ignore
-            self.compare_numbers(expected, received, filename, func_name)
-
     def test_read_noise(self) -> None:
         for hdr in self.hdrs_list:
-            em_mode = hdr["EMMODE"]
-            if em_mode != "Conventional":
-                em_mode = "EM"
             readout = hdr["READRATE"]
             preamp = float(hdr["PREAMP"][-1])  # type: ignore
             serial_number = f"{hdr['CCDSERN']}"
             read_noise = hdr["RDNOISE"]
-            filter = (
-                (self.read_noises["EM Mode"] == em_mode)
-                & (self.read_noises["Readout Rate"] == readout)
-                & (self.read_noises["Preamp"] == preamp)
+            filter = (self.read_noises["Readout Rate"] == readout) & (
+                self.read_noises["Preamp"] == preamp
             )
             line = self.read_noises[filter]
             filename, expected, received = (
@@ -410,16 +361,4 @@ class Test_Keywords(unittest.TestCase):
                 print(warn.message)
                 logger.error(
                     f"Test: {func_name}, filename: {hdu.header['FILENAME']}, {str(warn.message).replace('\n', '')}"  # type: ignore
-                )
-
-    def test_wpposseq(self) -> None:
-        func_name = inspect.currentframe().f_code.co_name  # type: ignore
-        for hdr in self.hdrs_list:
-            wpposseq = [int(val) for val in str(hdr["WPPOSSEQ"]).split(",")]
-            wppos = hdr["WPPOS"]
-            seqidx = int(hdr["SEQINDEX"])  # type: ignore
-            if wppos != wpposseq[seqidx - 1]:
-                logger.error(
-                    f"Test: {func_name}, filename: {hdr['FILENAME']},"
-                    f" unexpected WPPOS: {wppos}."
                 )
