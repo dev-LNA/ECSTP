@@ -19,60 +19,64 @@ from os import listdir
 from os.path import join
 from pathlib import Path
 
-import astropy.io.fits as fits
 import numpy as np
 import pandas as pd
+from astropy.io import fits
 from astropy.utils.exceptions import AstropyUserWarning
+
+logger = logging.getLogger(__name__)
 
 
 class Test_Keywords(unittest.TestCase):
-    var_types = {"float": float, "integer": int, "string": str, "boolean": bool}
-    kws_specific_values = [
-        "BITPIX",
-        "INSTMODE",
-        "SYNCMODE",
-        "FILTER",
-        "OBSTYPE",
-        "ACQMODE",
-        "PREAMP",
-        "READRATE",
-        "VSHIFT",
-        "TRIGGER",
-        "EMMODE",
-        "SHUTTER",
-        "TEMPST",
-        "VCLKAMP",
-        "CTRLINTE",
-        "WPSEL",
-        "CALW",
-        "CCDSERN",
-    ]
-    regex_expressions = {
-        "FILENAME": r"\d{8}_s4c[1-4]_\d{6}(_[a-z0-9]+)?\.fits$",
-        "DATE-OBS": r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}$",
-        "DATEFILE": r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}$",
-        "UTTIME": r"\d{2}:\d{2}:\d{2}\.\d{6}$",
-        "UTDATE": r"\d{4}-\d{2}-\d{2}$",
-        "RA": r"[\+-]?\d{2}:\d{2}:\d{2}\.\d+",
-        "DEC": r"[\+-]?\d{2}:\d{2}:\d{2}\.\d+",
-        "TCSHA": r"[\+-]?\d{2}:\d{2}:\d{2}(\.\d+)?",
-        "TCSDATE": r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}",
-        "ACSVRSN": r"v\d+\.\d+\.\d+",
-        "GUIVRSN": r"v\d+\.\d+\.\d+",
-        "ICSVRSN": r"v\d+\.\d+\.\d+",
-        "SDKVRSN": r"\d[.]\d{3}[.]\d{5}[.]\d",
-    }
-    kws_fixed_str_size = [("PROPID", 15), ("OBJECT", 30), ("OBSERVER", 54)]
-    simulated_mode_kws = [
-        "ACSMODE",
-        "WPROMODE",
-        "WPSEMODE",
-        "ANMODE",
-        "CALWMODE",
-        "GMIRMODE",
-        "GFOCMODE",
-        "TCSMODE",
-    ]
+    def __init__(self, methodName: str = "runTest") -> None:
+        super().__init__(methodName)
+        self.var_types = {"float": float, "integer": int, "string": str, "boolean": bool}
+        self.kws_specific_values = [
+            "BITPIX",
+            "INSTMODE",
+            "SYNCMODE",
+            "FILTER",
+            "OBSTYPE",
+            "ACQMODE",
+            "PREAMP",
+            "READRATE",
+            "VSHIFT",
+            "TRIGGER",
+            "EMMODE",
+            "SHUTTER",
+            "TEMPST",
+            "VCLKAMP",
+            "CTRLINTE",
+            "WPSEL",
+            "CALW",
+            "CCDSERN",
+        ]
+        self.regex_expressions = {
+            "FILENAME": r"\d{8}_s4c[1-4]_\d{6}(_[a-z0-9]+)?\.fits$",
+            "DATE-OBS": r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}$",
+            "DATEFILE": r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}$",
+            "UTTIME": r"\d{2}:\d{2}:\d{2}\.\d{6}$",
+            "UTDATE": r"\d{4}-\d{2}-\d{2}$",
+            "RA": r"[\+-]?\d{2}:\d{2}:\d{2}\.\d+",
+            "DEC": r"[\+-]?\d{2}:\d{2}:\d{2}\.\d+",
+            "TCSHA": r"[\+-]?\d{2}:\d{2}:\d{2}(\.\d+)?",
+            "TCSDATE": r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}",
+            "ACSVRSN": r"v\d+\.\d+\.\d+",
+            "GUIVRSN": r"v\d+\.\d+\.\d+",
+            "ICSVRSN": r"v\d+\.\d+\.\d+",
+            "SDKVRSN": r"\d[.]\d{3}[.]\d{5}[.]\d",
+        }
+        self.kws_fixed_str_size = [("PROPID", 15), ("OBJECT", 30), ("OBSERVER", 54)]
+        self.simulated_mode_kws = [
+            "ACSMODE",
+            "WPROMODE",
+            "WPSEMODE",
+            "ANMODE",
+            "CALWMODE",
+            "GMIRMODE",
+            "GFOCMODE",
+            "TCSMODE",
+        ]
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -125,7 +129,7 @@ class Test_Keywords(unittest.TestCase):
     @staticmethod
     def compare_numbers(expected, received, filename, func_name) -> None:
         if not np.allclose(expected, received):
-            logging.error(
+            logger.error(
                 f"Test: {func_name}, filename: {filename}, expected val: {expected}, received val: {received}"
             )
 
@@ -133,7 +137,7 @@ class Test_Keywords(unittest.TestCase):
     def compare_lists(expected, received, filename, func_name) -> None:
         expected, received = set(expected), set(received)
         if expected != received:
-            logging.error(
+            logger.error(
                 f"Test: {func_name}, filename: {filename}, diff: {expected ^ received}"
             )
 
@@ -141,42 +145,42 @@ class Test_Keywords(unittest.TestCase):
     def verify_if_different(expected, received, filename, func_name) -> None:
         expected, received = set(expected), set(received)
         if expected == received:
-            logging.error(
+            logger.error(
                 f"Test: {func_name}, filename: {filename}, expected: {expected}, received: {received}"
             )
 
     @staticmethod
     def verify_type(kw, value, _type, filename, func_name) -> None:
         if not isinstance(value, _type):
-            logging.error(
+            logger.error(
                 f"Test: {func_name}, filename: {filename}, keyword {kw} is not an instance of {_type}: an {type(value)} was found."
             )
 
     @staticmethod
     def kw_in_interval(_min, _max, value, kw, filename, func_name) -> None:
         if not _min <= value <= _max:
-            logging.error(
+            logger.error(
                 f"Test: {func_name}, filename: {filename}, keyword {kw} is not in the interval [{_min}, {_max}]: {value}"
             )
 
     @staticmethod
     def val_in_list(value, _list, kw, filename, func_name) -> None:
         if value not in _list:
-            logging.error(
+            logger.error(
                 f"Test: {func_name}, filename: {filename}, keyword {kw} is not in {_list}: {value}"
             )
 
     @staticmethod
     def verify_regex(value, expression, kw, filename, func_name) -> None:
         if not re.match(expression, value):
-            logging.error(
+            logger.error(
                 f"Test: {func_name}, filename: {filename}, an unexpected value was found for the keyword {kw}: {value}"
             )
 
     @staticmethod
     def verify_str_size(value, str_size, kw, filename, func_name) -> None:
         if (n := len(value)) > str_size:
-            logging.error(
+            logger.error(
                 f"Test: {func_name}, filename: {filename}, the expected size for the keyword {kw} is {str_size}. However, {n} characters were found."
             )
 
@@ -184,7 +188,7 @@ class Test_Keywords(unittest.TestCase):
 
     def test_missing_keywords(self) -> None:
         for hdr in self.hdrs_list:
-            if "COMMENT" in hdr.keys():
+            if "COMMENT" in hdr:
                 del hdr["COMMENT"]
             hdr_keywords = list(hdr.keys())
             csv_keywords = list(self.header_content["Keyword"].values)
@@ -193,7 +197,7 @@ class Test_Keywords(unittest.TestCase):
 
     def test_kw_comments(self) -> None:
         for hdr in self.hdrs_list:
-            if "COMMENT" in hdr.keys():
+            if "COMMENT" in hdr:
                 del hdr["COMMENT"]
             hdr_comment = hdr.comments
             csv_comment = self.header_content["Comment"]
@@ -210,10 +214,9 @@ class Test_Keywords(unittest.TestCase):
                     type = self.var_types[row["Type"]]
                     self.verify_type(kw, keyword_val, type, hdr["FILENAME"], func_name)
                 except Exception as e:
-                    logging.error(
-                        f"Test: {func_name}, filename: {hdr['FILENAME']}, keyword: {kw}, {repr(e)}"
+                    logger.error(
+                        f"Test: {func_name}, filename: {hdr['FILENAME']}, keyword: {kw}, {e!r}"
                     )
-        return
 
     def test_kws_in_interval(self) -> None:
         func_name = inspect.currentframe().f_code.co_name  # type: ignore
@@ -238,10 +241,9 @@ class Test_Keywords(unittest.TestCase):
 
                         self.kw_in_interval(_min, _max, value, kw, filename, func_name)
                 except Exception as e:
-                    logging.error(
-                        f"Test: {func_name}, filename: {hdr['FILENAME']}, keyword: {kw}, {repr(e)}"
+                    logger.error(
+                        f"Test: {func_name}, filename: {hdr['FILENAME']}, keyword: {kw}, {e!r}"
                     )
-        return
 
     def test_kws_specific_vals(self) -> None:
         for hdr in self.hdrs_list:
@@ -268,7 +270,6 @@ class Test_Keywords(unittest.TestCase):
                 filename = hdr["FILENAME"]
                 func_name = inspect.currentframe().f_code.co_name  # type: ignore
                 self.verify_regex(value, expression, kw, filename, func_name)
-        return
 
     def test_WPPOS(self) -> None:
         for hdr in self.hdrs_list:
@@ -277,11 +278,10 @@ class Test_Keywords(unittest.TestCase):
                     "The value WPPOS=0 was found the polarimetric mode.",
                     hdr["FILENAME"],
                 )
-        return
 
     def test_comment_kw(self) -> None:
         for hdr in self.hdrs_list:
-            if "COMMENT" in hdr.keys():
+            if "COMMENT" in hdr:
                 filename = hdr["FILENAME"]
                 expected = ""
                 received = hdr["COMMENT"]
@@ -397,7 +397,7 @@ class Test_Keywords(unittest.TestCase):
         for hdr in self.hdrs_list:
             for kw in self.simulated_mode_kws:
                 if not hdr[kw]:
-                    logging.error(
+                    logger.error(
                         f"Test: {func_name}, filename: {hdr['FILENAME']}, the keyword {kw} was set in the simulated mode."
                     )
 
@@ -406,7 +406,7 @@ class Test_Keywords(unittest.TestCase):
         for hdr in self.hdrs_list:
             for kw in ["OBSERVER", "PROPID", "OBJECT"]:
                 if hdr[kw] == "":
-                    logging.error(
+                    logger.error(
                         f"Test: {func_name}, filename: {hdr['FILENAME']}, the keyword {kw} is empty."
                     )
 
@@ -418,7 +418,7 @@ class Test_Keywords(unittest.TestCase):
                 hdu = fits.open(self.images_folder / file, checksum=True)[0]
             for warn in w:
                 print(warn.message)
-                logging.error(
+                logger.error(
                     f"Test: {func_name}, filename: {hdu.header['FILENAME']}, {str(warn.message).replace('\n', '')}"  # type: ignore
                 )
 
@@ -428,8 +428,8 @@ class Test_Keywords(unittest.TestCase):
             wpposseq = [int(val) for val in str(hdr["WPPOSSEQ"]).split(",")]
             wppos = hdr["WPPOS"]
             seqidx = int(hdr["SEQINDEX"])  # type: ignore
-            if not wppos == wpposseq[seqidx - 1]:
-                logging.error(
+            if wppos != wpposseq[seqidx - 1]:
+                logger.error(
                     f"Test: {func_name}, filename: {hdr['FILENAME']},"
                     f" unexpected WPPOS: {wppos}."
                 )
